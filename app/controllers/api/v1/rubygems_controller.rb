@@ -17,13 +17,9 @@ class Api::V1::RubygemsController < Api::BaseController
   end
 
   def show
-    if @rubygem.hosted? && @rubygem.public_versions.indexed.count.nonzero?
-      respond_to do |format|
-        format.json { render json: @rubygem }
-        format.yaml { render yaml: @rubygem }
-      end
-    else
-      render text: t(:this_rubygem_could_not_be_found), status: :not_found
+    respond_to do |format|
+      format.json { render json: @rubygem }
+      format.yaml { render yaml: @rubygem }
     end
   end
 

@@ -144,31 +144,39 @@ class Rubygem < ActiveRecord::Base
   end
 
   def payload(version = versions.most_recent, protocol = Gemcutter::PROTOCOL, host_with_port = Gemcutter::HOST)
-    deps = version.dependencies.to_a
-    {
+    resp = {
       'name'              => name,
       'downloads'         => downloads,
-      'version'           => version.number,
-      'version_downloads' => version.downloads_count,
-      'platform'          => version.platform,
-      'authors'           => version.authors,
-      'info'              => version.info,
-      'licenses'          => version.licenses,
-      'metadata'          => version.metadata,
-      'sha'               => version.sha256_hex,
       'project_uri'       => "#{protocol}://#{host_with_port}/gems/#{name}",
-      'gem_uri'           => "#{protocol}://#{host_with_port}/gems/#{version.full_name}.gem",
       'homepage_uri'      => linkset.try(:home),
       'wiki_uri'          => linkset.try(:wiki),
-      'documentation_uri' => linkset.try(:docs).presence || version.documentation_path,
       'mailing_list_uri'  => linkset.try(:mail),
       'source_code_uri'   => linkset.try(:code),
-      'bug_tracker_uri'   => linkset.try(:bugs),
-      'dependencies'      => {
-        'development' => deps.select { |r| r.rubygem && 'development' == r.scope },
-        'runtime'     => deps.select { |r| r.rubygem && 'runtime' == r.scope }
-      }
+      'bug_tracker_uri'   => linkset.try(:bugs)
     }
+    if !version.nil? && version.indexed
+      deps = version.dependencies.to_a
+      resp.merge({
+        'version'           => version.number,
+        'version_downloads' => version.downloads_count,
+        'platform'          => version.platform,
+        'authors'           => version.authors,
+        'info'              => version.info,
+        'licenses'          => version.licenses,
+        'metadata'          => version.metadata,
+        'sha'               => version.sha256_hex,
+        'gem_uri'           => "#{protocol}://#{host_with_port}/gems/#{version.full_name}.gem",
+        'documentation_uri' => linkset.try(:docs).presence || version.documentation_path,
+        'dependencies'      => {
+          'development' => deps.select { |r| r.rubygem && 'development' == r.scope },
+          'runtime'     => deps.select { |r| r.rubygem && 'runtime' == r.scope }
+        }
+      })
+    else
+      resp.merge({
+        'documentation_uri' => linkset.try(:docs).presence
+      })
+    end
   end
 
   def as_json(*)
