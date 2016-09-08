@@ -113,7 +113,6 @@ zh-CN:
     index:
       title: 'Gems'
     show:
-      not_hosted_notice: 这个 Gem 目前没有托管在 Gemcutter。
       install: 安装
       yanked_notice: "这个 Gem 版本已经 yanked（废弃了），他无法提供下载，也无法被其他的 Gem 依赖。"
       authors_header: 作者

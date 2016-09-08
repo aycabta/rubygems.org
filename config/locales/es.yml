@@ -277,7 +277,6 @@ es:
         subscribe: Suscribirse
         report_abuse: Reportar abuso
       no_licenses: N/D
-      not_hosted_notice: Esta gema no se encuentra alojada en Gemcutter.
       owners_header: Administradores
       requirements_header: Requerimientos
       show_all_versions: Muestra todas las versiones (%{count} total)

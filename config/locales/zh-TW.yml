@@ -112,7 +112,6 @@ zh-TW:
     index:
       title: 'Gems'
     show:
-      not_hosted_notice: "這個 Gem 目前沒有在 Gemcutter 上"
       install: "安裝"
       yanked_notice: "這個 Gem 版本已被移除，因此無法提供下載，也無法被其他的 Gem 相依。"
       authors_header: "作者"

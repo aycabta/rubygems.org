@@ -112,7 +112,6 @@ fr:
       title: "Gems"
       downloads: Téléchargements
     show:
-      not_hosted_notice: "Gem non hébergé sur Rubygems pour le moment."
       install: "installation"
       yanked_notice: "Retrait de Gem : disponible ni directement, ni pour les gems qui en dépendraient."
       authors_header: "Auteurs"

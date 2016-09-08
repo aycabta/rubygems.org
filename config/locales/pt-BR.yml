@@ -111,7 +111,6 @@ pt-BR:
     index:
       title: 'Gems'
     show:
-      not_hosted_notice: Esta gem não está hospedada no Gemcutter.
       install: instalar
       yanked_notice: "Esta gem foi removida, e não está mais disponível para download."
       authors_header: Autores

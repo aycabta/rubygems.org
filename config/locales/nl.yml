@@ -93,7 +93,6 @@ nl:
       stats_header: Statistieken
       authors_header: Auteurs
       versions_header: Versies
-      not_hosted_notice: Deze gem wordt momenteel niet gehost op rubygems.org.
       owners_header: Eigenaren
       links:
         home: Startpagina
