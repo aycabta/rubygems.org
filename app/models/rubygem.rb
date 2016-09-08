@@ -265,6 +265,10 @@ class Rubygem < ActiveRecord::Base
     versions.by_earliest_built_at.limit(1).last.built_at
   end
 
+  def days_left_to_protect
+    (updated_at.to_date - 100.days.ago.to_date).to_i
+  end
+
   private
 
   # a gem namespace is not protected if it is
