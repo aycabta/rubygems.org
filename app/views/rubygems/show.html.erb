@@ -13,9 +13,9 @@
 <% if @rubygem.public_versions.count.zero? %>
   <div class="t-body">
     <% if @rubygem.pushable? %>
-      <p><%= t('.not_hosted_notice_html', days_left: @rubygem.days_left_to_protect) %></p>
+      <p><%= t '.not_hosted_notice_html' %></p>
     <% else %>
-      <p><%= t '.reserved_namespace_html' %></p>
+      <p><%= t('.reserved_namespace_html', days_left: @rubygem.days_left_to_protect) %></p>
     <% end %>
     <%= unsubscribe_link(@rubygem) %>
   </div>
